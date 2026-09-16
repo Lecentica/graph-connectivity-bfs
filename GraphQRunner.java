@@ -1,0 +1,29 @@
+//Name - Brayden Kim
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class GraphQRunner
+{
+	public static void main( String[] args ) throws IOException
+	{
+		Scanner file = new Scanner(new File("graph1.dat"));
+		int howManyTimes = file.nextInt();
+		file.nextLine();
+		for(int x=0; x<howManyTimes; x++)
+		{
+			String input = file.nextLine();
+			GraphQ test = new GraphQ(input);
+
+			input=file.nextLine();
+			String start = input.substring(0,1);
+			String stop = input.substring(1,2);
+
+			if(test.contains(start)&&test.contains(stop))
+				test.check(input.substring(0,1),input.substring(1,2));
+
+			System.out.println(start + " CONNECTS TO " + stop + " == " + test);
+		}
+	}
+}
